@@ -46,9 +46,10 @@ class EmailAuth
   #   "contentUrl": "https:...files.json"
   # }
   def self.pregame_setup(token)
-    post("https://msm-auth.bbbgame.net/pregame_setup.php", :body => common_params, :headers => {
-      "Authorization" => token
-    })
+    params = {
+      :access_key => $settings.access_key
+    }
+    post("https://msm-auth.bbbgame.net/pregame_setup.php", :body => params.merge(common_params), :headers => {
   end
 end
 
